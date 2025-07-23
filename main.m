@@ -1,12 +1,13 @@
 clear; clc; close all;
 
-N = 11; % Image Size
-% [N, x1, y1, x2, y2, Deltarho, Deltatheta]
+N = [11, 51, 101, 501, 1001, 5001, 10001]; % Image Size
+% [n, x1, y1, x2, y2, Deltarho, Deltatheta]
 results = [];
-% [N, x1, y1, x2, y2, Deltarho, Deltatheta]
+% [n, x1, y1, x2, y2, Deltarho, Deltatheta]
 results_deg = [];
-while N <= 100000
-    center = round(N / 2);
+tic
+for n = N
+    center = round(n / 2);
     % [rho, theta, theta_deg, x, y;]
     polar_points = [];
 
@@ -55,22 +56,21 @@ while N <= 100000
     Deltarho_deg = abs(polar_points_min_deg(2, 1) - polar_points_min_deg(1, 1));
     Deltatheta_deg = abs(polar_points_min_deg(2, 3) - polar_points_min_deg(1, 3));
 
-    results = [results; [N, polar_points_min(1, 4), polar_points_min(1, 5), ...
+    results = [results; [n, polar_points_min(1, 4), polar_points_min(1, 5), ...
     polar_points_min(2, 4), polar_points_min(2, 5), Deltarho, Deltatheta]];
 
-    results_deg = [results_deg; [N, polar_points_min_deg(1, 4), ...
+    results_deg = [results_deg; [n, polar_points_min_deg(1, 4), ...
     polar_points_min_deg(1, 5), polar_points_min_deg(2, 4), ...
     polar_points_min_deg(2, 5), Deltarho_deg, Deltatheta_deg]];
-
-    N = (N-1)*10+1;
 end
+toc
 
 disp('For mapping in rad')
 table(results(:,1), results(:,2), results(:,3), results(:,4), results(:,5), ...
-results(:,6), results(:,7), 'VariableNames', {'N', 'x1', 'y1', 'x2', 'y2', ...
+results(:,6), results(:,7), 'VariableNames', {'n', 'x1', 'y1', 'x2', 'y2', ...
 'Deltarho', 'Deltatheta'})
 
 disp('For mapping in degrees')
 table(results_deg(:,1), results_deg(:,2), results_deg(:,3), results_deg(:,4), ...
-results_deg(:,5), results_deg(:,6), results_deg(:,7), 'VariableNames', {'N', ...
+results_deg(:,5), results_deg(:,6), results_deg(:,7), 'VariableNames', {'n', ...
 'x1', 'y1', 'x2', 'y2', 'Deltarho', 'Deltatheta'})
