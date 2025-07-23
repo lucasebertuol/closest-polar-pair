@@ -9,7 +9,7 @@ results = [];
 results_deg = [];
 tic
 for n = N
-    disp("Calculando para n = " + num2str(n));
+    disp("Calculando para n = " + num2str(n) + "...");
     center = round(n / 2);
     % [rho, theta, theta_deg, x, y;]
     polar_points = [];
