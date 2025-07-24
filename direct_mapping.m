@@ -4,9 +4,9 @@
 clear; clc; close all;
 
 % ---------------------------------- Settings ---------------------------------
-N = 101; % Image Size
-Deltarho = ;
-Deltatheta = ; % In degrees
+N = 201; % Image Size
+Deltarho = 0.0049999;
+Deltatheta = 0.57294; % In degrees
 % -----------------------------------------------------------------------------
 
 center = round(N/2);
@@ -14,6 +14,9 @@ rho = sqrt(center^2 + center^2);
 Rho = ceil(rho / Deltarho);
 Theta = ceil(180/Deltatheta + 1);
 
+
+% inim = double(rgb2gray(imread('eagle_512x512.png')));
+% inim = inim(1:511, 1:511);
 inim = ones(N, N);
 figure
 imshow(inim);
@@ -35,6 +38,6 @@ for r = 1:center
     end
 end
 figure
-imshow(outim)
+imshow(mat2gray(outim))
 
 preservation_percentage = sum(outim(:) == 1) / (N * ceil(N / 2)) * 100
