@@ -2,7 +2,7 @@
 % that preserves all information in the Cartesian-polar mapping.
 clear; clc; close all;
 
-N = [11, 51, 101, 501, 1001, 5001, 10001]; % Image Size
+N = [101, 201, 501, 1001, 1501]; % Image Size
 % [n, x1, y1, x2, y2, Deltarho, Deltatheta]
 results = [];
 % [n, x1, y1, x2, y2, Deltarho, Deltatheta]
