@@ -30,7 +30,7 @@ for r = 1:center
         y = center - r;
 
         rho = round(sqrt(x^2+y^2) / Deltarho) + 1;
-        theta = round(rad2deg(atan2(y, x)) / Deltatheta) + 1;
+        theta = round(atan2d(y, x) / Deltatheta) + 1;
 
         if rho <= Rho && theta <= Theta
             outim(rho, theta) = inim(r, c);
@@ -40,4 +40,4 @@ end
 figure
 imshow(mat2gray(outim))
 
-preservation_percentage = sum(outim(:) == 1) / (N * ceil(N / 2)) * 100
+preservation_percentage = sum(outim(:) == 1) / ((N-1)/2 * N + N) * 100
