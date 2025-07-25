@@ -98,7 +98,7 @@ for i = 1:length(D_deg)
 end
 
 hold off;
-title('Plot dos vetores do cell array');
-legend("101", "201", "301")
-xlabel('Índice');
-ylabel('Valor');
+title('Distances');
+legend("101", "201", "301");
+xlabel('Index');
+ylabel('Distance');
