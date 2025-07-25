@@ -11,7 +11,7 @@ dorig = sqrt((0.0049999)^2 + (0.57294)^2)
 % -----------------------------------------------------------------------------
 
 center = round(N/2);
-rho = sqrt(center^2 + center^2);
+rho = sqrt((center-1)^2 + (center-1)^2);
 Rho = ceil(rho / Deltarho + 1);
 Theta = ceil(180/Deltatheta + 1);
 
