@@ -2,7 +2,14 @@
 % that preserves all information in the Cartesian-polar mapping.
 clear; clc; close all;
 
-N = [101, 201, 501, 1001, 1501]; % Image Size
+% {[d_deg],}
+D_deg = {};
+store_d_deg = true;
+if store_d_deg
+    N = [101, 201, 301]; % Image Size
+else
+    N = [101, 201, 501, 1001, 1501]; % Image Size
+end
 % [n, x1, y1, x2, y2, Deltarho, Deltatheta]
 results = [];
 % [n, x1, y1, x2, y2, Deltarho, Deltatheta]
@@ -29,6 +36,7 @@ for n = N
     R = size(polar_points, 1);
     dmin = inf;
     polar_points_min = [];
+    d_deg = [];
     dmin_deg = inf;
     polar_points_min_deg = [];
 
@@ -46,12 +54,16 @@ for n = N
             d = sqrt((polar_points(ii, 1) - polar_points(i, 1))^2 + ...
             (polar_points(ii, 3) - polar_points(i, 3))^2);
 
+            d_deg(end+1) = d;
+
             if d < dmin_deg
                 dmin_deg = d;
                 polar_points_min_deg = [polar_points(i, :); polar_points(ii, :)];
             end
         end
     end
+
+    D_deg{end+1} = sort(d_deg);
 
     Deltarho = abs(polar_points_min(2, 1) - polar_points_min(1, 1));
     Deltatheta = abs(polar_points_min(2, 2) - polar_points_min(1, 2));
@@ -77,3 +89,16 @@ disp('For mapping in degrees')
 table(results_deg(:,1), results_deg(:,2), results_deg(:,3), results_deg(:,4), ...
 results_deg(:,5), results_deg(:,6), results_deg(:,7), 'VariableNames', {'n', ...
 'x1', 'y1', 'x2', 'y2', 'Deltarho', 'Deltatheta'})
+
+figure;
+hold on;  
+
+for i = 1:length(D_deg)
+    plot(D_deg{i}); 
+end
+
+hold off;
+title('Plot dos vetores do cell array');
+legend("101", "201", "301")
+xlabel('Índice');
+ylabel('Valor');
