@@ -5,7 +5,7 @@ clear; clc; close all;
 
 % ---------------------------------- Settings ---------------------------------
 N = 101; % Image Size
-dorig = sqrt((0.70354)^2 + (0.57873)^2)
+dorig = sqrt((0.7035)^2 + (0.5787)^2)
 Deltarho = 1.15*(dorig/sqrt(2));
 Deltatheta = Deltarho; % In degrees
 % -----------------------------------------------------------------------------
@@ -61,8 +61,8 @@ preservation_percentage = sum(outim(:)) / (N^2) * 100
 %d para os pontos próximos a 45 graus
 rho1 = (sqrt((N - center)^2+(N - center)^2) / Deltarho)+1;
 rho2 = (sqrt((N-1 - center)^2+(N - center)^2) / Deltarho)+1;
-theta1 = ((atan2d(center - N, N - center)+ 180)/ Deltatheta)+1;
-theta2 = ((atan2d(center - N - 1, N - center)+ 180)/ Deltatheta)+1;
+theta1 = ((atan2d(N-center, N - center)+ 180)/ Deltatheta)+1;
+theta2 = ((atan2d(N-1-center, N - center)+ 180)/ Deltatheta)+1;
 d = sqrt((rho1 - rho2)^2 + (theta1 - theta2)^2)
 
 rho1 = (sqrt((2 - center)^2+(90 - center)^2) / Deltarho) + 1;
