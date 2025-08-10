@@ -10,7 +10,7 @@ Deltarho = 1.15*(dorig/sqrt(2));
 Deltatheta = Deltarho; % In degrees
 % -----------------------------------------------------------------------------
 
-center = round(N/2);
+center = (N - 1 / 2) + 1;
 rho = sqrt((center-1)^2 + (center-1)^2);
 Rho = ceil(rho / Deltarho+1); %Tudo indica que não deveria se somar 1
 Theta = ceil(360/Deltatheta+1); %Tudo indica que não deveria se somar 1
