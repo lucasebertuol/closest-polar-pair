@@ -3,7 +3,8 @@
 clear; clc; close all;
 
 %N = [101, 201, 501, 1001, 1501]; % Image Size
-N = [101, 201, 501, 1001]; % Image Size
+%N = [101, 201, 501, 1001]; % Image Size
+N = [201, 301, 501]; % Image Size
 % [n, x1, y1, x2, y2, Deltarho, Deltatheta]
 results = [];
 % [n, x1, y1, x2, y2, Deltarho, Deltatheta, Rho*Theta]
