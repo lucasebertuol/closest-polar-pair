@@ -69,7 +69,7 @@ for n = N
 
     resolution = dmin_deg/sqrt(2);
     Rho = ceil(rhomax / resolution + 1);
-    Theta = ceil(pi/resolution);
+    Theta = ceil(180/resolution);
     
     results_dmin_deg = [results_dmin_deg; [n, round(dmin_deg*1000)/1000, ...
         round(resolution*1000)/1000, Rho, Theta, Rho*Theta]];
