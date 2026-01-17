@@ -4,7 +4,7 @@ clear; clc; close all;
 
 %N = [101, 201, 501, 1001, 1501]; % Image Size
 %N = [101, 201, 501, 1001]; % Image Size
-N = [3, 5, 9, 35, 71, 101, 151, 201, 301, 501]; % Image Size
+N = [3, 5, 7, 51, 101, 201, 301, 501, 1001]; % Image Size
 % [n, x1, y1, x2, y2, Deltarho, Deltatheta]
 results = [];
 % [n, x1, y1, x2, y2, Deltarho, Deltatheta, Rho*Theta]
@@ -94,8 +94,9 @@ toc
 
 disp('For mapping in rad')
 table(results(:,1), results(:,2), results(:,3), results(:,4), results(:,5), ...
-results(:,6), results(:,7), rad2deg(results(:,7)), 'VariableNames', {'n', 'x1', 'y1', 'x2', 'y2', ...
-'Deltarho', 'Deltatheta', 'Deltatheta in degrees'})
+round(results(:,6),3), round(results(:,7),3), round(rad2deg(results(:,7)),3), ...
+'VariableNames', {'n', 'x1', 'y1', 'x2', 'y2', 'Deltarho', 'Deltatheta', ...
+'Deltatheta in degrees'})
 
 % disp('For mapping in degrees')
 % table(results_deg(:,1), results_deg(:,2), results_deg(:,3), results_deg(:,4), ...
